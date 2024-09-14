@@ -4,7 +4,7 @@
   <id>http://0.0.0.0:4000/</id>
   <title>Minn</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2024-09-14T14:28:52+09:00</updated>
+  <updated>2024-09-14T14:37:40+09:00</updated>
   <author>
     <name>Minho Choi</name>
     <uri>http://0.0.0.0:4000/</uri>
@@ -24,7 +24,7 @@
     <link href="http://0.0.0.0:4000/posts/pyenv%EB%A1%9C-Python-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="pyenv로 Python 설치하기" />
     <published>2024-09-14T00:00:00+09:00</published>
   
-    <updated>2024-09-14T13:36:24+09:00</updated>
+    <updated>2024-09-14T14:29:48+09:00</updated>
   
     <id>http://0.0.0.0:4000/posts/pyenv%EB%A1%9C-Python-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</id>
     <content src="http://0.0.0.0:4000/posts/pyenv%EB%A1%9C-Python-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" />
@@ -65,7 +65,7 @@ libncurses5-dev libncursesw5-dev xz-u...</summary>
     <link href="http://0.0.0.0:4000/posts/rbenv%EB%A1%9C-Ruby-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="rbenv로 Ruby 설치하기" />
     <published>2024-09-13T00:00:00+09:00</published>
   
-    <updated>2024-09-14T13:36:24+09:00</updated>
+    <updated>2024-09-14T14:29:48+09:00</updated>
   
     <id>http://0.0.0.0:4000/posts/rbenv%EB%A1%9C-Ruby-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</id>
     <content src="http://0.0.0.0:4000/posts/rbenv%EB%A1%9C-Ruby-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" />
@@ -102,7 +102,7 @@ Ruby의 version manager에는 크게
     <link href="http://0.0.0.0:4000/posts/nvm%EC%9C%BC%EB%A1%9C-node-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="nvm으로 node 설치하기" />
     <published>2024-09-13T00:00:00+09:00</published>
   
-    <updated>2024-09-14T13:36:24+09:00</updated>
+    <updated>2024-09-14T14:29:48+09:00</updated>
   
     <id>http://0.0.0.0:4000/posts/nvm%EC%9C%BC%EB%A1%9C-node-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</id>
     <content src="http://0.0.0.0:4000/posts/nvm%EC%9C%BC%EB%A1%9C-node-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" />
@@ -146,7 +146,7 @@ echo &amp;#39;export NVM_DIR...</summary>
     <link href="http://0.0.0.0:4000/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/" rel="alternate" type="text/html" title="VirtualBox 네트워크 설정 (호스트 전용 어댑터, 어댑터에 브리지 조합)" />
     <published>2024-09-13T00:00:00+09:00</published>
   
-    <updated>2024-09-14T13:36:24+09:00</updated>
+    <updated>2024-09-14T14:29:48+09:00</updated>
   
     <id>http://0.0.0.0:4000/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/</id>
     <content src="http://0.0.0.0:4000/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/" />
@@ -192,7 +192,7 @@ VirtualBox의 네트워크 모드는
     <link href="http://0.0.0.0:4000/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/" rel="alternate" type="text/html" title="VirtualBox Samba 설정" />
     <published>2024-09-13T00:00:00+09:00</published>
   
-    <updated>2024-09-14T13:36:24+09:00</updated>
+    <updated>2024-09-14T14:29:48+09:00</updated>
   
     <id>http://0.0.0.0:4000/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/</id>
     <content src="http://0.0.0.0:4000/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/" />

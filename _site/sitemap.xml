@@ -1,102 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    
-    <url>
-        <loc>http://0.0.0.0:4000/posts/pyenv%EB%A1%9C-Python-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</loc>
-        
-        <lastmod>2024-09-14T00:00:00+09:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>http://0.0.0.0:4000/posts/rbenv%EB%A1%9C-Ruby-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</loc>
-        
-        <lastmod>2024-09-13T00:00:00+09:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>http://0.0.0.0:4000/posts/nvm%EC%9C%BC%EB%A1%9C-node-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</loc>
-        
-        <lastmod>2024-09-13T00:00:00+09:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>http://0.0.0.0:4000/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/</loc>
-        
-        <lastmod>2024-09-13T00:00:00+09:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>http://0.0.0.0:4000/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/</loc>
-        
-        <lastmod>2024-09-13T00:00:00+09:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>http://0.0.0.0:4000/posts/Ubuntu-%EC%84%A4%EC%B9%98-%ED%9B%84-%ED%95%84%EC%88%98-%EC%84%B8%ED%8C%85-%EC%B4%9D%EC%A0%95%EB%A6%AC/</loc>
-        
-        <lastmod>2024-09-13T00:00:00+09:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://0.0.0.0:4000/posts/Ubuntu-%EC%84%A4%EC%B9%98-%ED%9B%84-%ED%95%84%EC%88%98-%EC%84%B8%ED%8C%85-%EC%B4%9D%EC%A0%95%EB%A6%AC/</loc>
+<lastmod>2024-09-14T14:29:48+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/</loc>
+<lastmod>2024-09-14T14:29:48+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/</loc>
+<lastmod>2024-09-14T14:29:48+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/posts/nvm%EC%9C%BC%EB%A1%9C-node-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</loc>
+<lastmod>2024-09-14T14:29:48+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/posts/rbenv%EB%A1%9C-Ruby-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</loc>
+<lastmod>2024-09-14T14:29:48+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/posts/pyenv%EB%A1%9C-Python-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</loc>
+<lastmod>2024-09-14T14:29:48+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/categories/</loc>
+<lastmod>2024-09-14T13:36:24+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/tags/</loc>
+<lastmod>2024-09-14T13:36:24+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/archives/</loc>
+<lastmod>2024-09-14T13:36:24+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/about/</loc>
+<lastmod>2024-09-14T13:36:24+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/</loc>
+<lastmod>2024-09-14T13:36:24+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/categories/%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/categories/ubuntu/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/categories/virtualbox/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/google830957bd69750f67.html</loc>
+<lastmod>2024-09-14T13:44:13+09:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/naver5400f4782b01baca4b4d17978e1d976f.html</loc>
+<lastmod>2024-09-14T14:00:42+09:00</lastmod>
+</url>
 </urlset>
