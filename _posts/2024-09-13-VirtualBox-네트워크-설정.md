@@ -2,6 +2,7 @@
 title: VirtualBox 네트워크 설정 (호스트 전용 어댑터, 어댑터에 브리지 조합)
 #date: YYYY-MM-DD HH:MM:SS +/-TTTT
 categories: [개발 환경 설정, VirtualBox]
+published: true
 #tags: [TAG]     # TAG names should always be lowercase
 #description: 
 #math: 

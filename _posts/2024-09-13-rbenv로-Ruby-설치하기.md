@@ -2,6 +2,7 @@
 title: rbenv로 Ruby 설치하기
 #description: 
 categories: [개발 환경 설정, Ubuntu]
+published: true
 #pin: true
 math: true
 ---

@@ -155,6 +155,7 @@ baseurl: ""
 # Plugins
 plugins:
   - jekyll-last-modified-at
+  - jekyll-sitemap
 
 # ------------ The following options are not recommended to be modified ------------------
 
@@ -210,6 +211,8 @@ compress_html:
     envs: [development]
 
 exclude:
+  - assets/robots.txt
+  - _site/robots.txt
   - "*.gem"
   - "*.gemspec"
   - docs
