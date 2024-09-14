@@ -1,0 +1,217 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://0.0.0.0:4000/</id>
+  <title>Minn</title>
+  <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
+  <updated>2024-09-14T13:56:05+09:00</updated>
+  <author>
+    <name>Minho Choi</name>
+    <uri>http://0.0.0.0:4000/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="http://0.0.0.0:4000/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="ko"
+    href="http://0.0.0.0:4000/"/>
+  <generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator>
+  <rights> © 2024 Minho Choi </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>pyenv로 Python 설치하기</title>
+    <link href="http://0.0.0.0:4000/posts/pyenv%EB%A1%9C-Python-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="pyenv로 Python 설치하기" />
+    <published>2024-09-14T00:00:00+09:00</published>
+  
+    <updated>2024-09-14T13:36:24+09:00</updated>
+  
+    <id>http://0.0.0.0:4000/posts/pyenv%EB%A1%9C-Python-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</id>
+    <content src="http://0.0.0.0:4000/posts/pyenv%EB%A1%9C-Python-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" />
+    <author>
+      <name>Minho Choi</name>
+    </author>
+
+  
+    
+    <category term="개발 환경 설정" />
+    
+    <category term="Ubuntu" />
+    
+  
+
+  <summary>1. 개요
+
+pyenv는 다양한 버전의 Python을 쉽게 관리하고 설치할 수 있는 도구입니다. 이를 사용하면 여러 Python 버전을 시스템에 설치하고, 필요에 따라 특정 버전을 활성화할 수 있습니다. 아래는 pyenv를 사용하여 Python을 설치하는 방법을 단계별로 설명합니다.
+
+2. 설치 방법
+
+2.1. 필요한 종속성 설치
+
+
+  아래의 명령어를 통해 의존성 패키지를 설치합니다.
+
+
+sudo apt update
+sudo apt install -y make build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+libncurses5-dev libncursesw5-dev xz-u...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>rbenv로 Ruby 설치하기</title>
+    <link href="http://0.0.0.0:4000/posts/rbenv%EB%A1%9C-Ruby-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="rbenv로 Ruby 설치하기" />
+    <published>2024-09-13T00:00:00+09:00</published>
+  
+    <updated>2024-09-14T13:36:24+09:00</updated>
+  
+    <id>http://0.0.0.0:4000/posts/rbenv%EB%A1%9C-Ruby-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</id>
+    <content src="http://0.0.0.0:4000/posts/rbenv%EB%A1%9C-Ruby-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" />
+    <author>
+      <name>Minho Choi</name>
+    </author>
+
+  
+    
+    <category term="개발 환경 설정" />
+    
+    <category term="Ubuntu" />
+    
+  
+
+  <summary>1. 개요
+
+웬만한 패키지같은 경우에는 sudo apt 하나면 만능으로 해결되지만, Ruby의 경우 aptitude로 설치하면 최신 버전이 아닌 3.0 버전까지밖에 설치가 안되더라구요. (저의 경우에 이런 것이라 사용자마다 다를 수 있습니다.) Ruby가 version dependency가 굉장히 심한 언어이다보니 별도의 version manager를 통해서 설치하는 것이 훨씬 편합니다. 기존에 pyenv 등을 사용하시던 분이면 익숙하실거라 생각합니다.
+
+Ruby의 version manager에는 크게
+
+
+  rvm
+  rbenv
+
+
+이렇게 2가지가 있는데 rbenv가 가볍다보니 많은 사람들이 해당 유틸리티를 사용하고 있습니다. 본 포스트에서는 rbenv로 알맞은 버전의 Ruby를 설치하는 방법을 알려...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>nvm으로 node 설치하기</title>
+    <link href="http://0.0.0.0:4000/posts/nvm%EC%9C%BC%EB%A1%9C-node-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="nvm으로 node 설치하기" />
+    <published>2024-09-13T00:00:00+09:00</published>
+  
+    <updated>2024-09-14T13:36:24+09:00</updated>
+  
+    <id>http://0.0.0.0:4000/posts/nvm%EC%9C%BC%EB%A1%9C-node-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</id>
+    <content src="http://0.0.0.0:4000/posts/nvm%EC%9C%BC%EB%A1%9C-node-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" />
+    <author>
+      <name>Minho Choi</name>
+    </author>
+
+  
+    
+    <category term="개발 환경 설정" />
+    
+    <category term="Ubuntu" />
+    
+  
+
+  <summary>1. 개요
+
+nvm이란 Node Version Manager의 약자로, Node.js의 버전을 관리하는 도구입니다. 보통 이러한 버전 관리자는 여러 프로젝트에서 다른 버전을 요구할 때 사용함으로써 패키지의 버전을 쉽게 설정하고 전환할 수 있습니다.
+
+2. 설치 방법
+
+2.1. Node.js 버전 관리 도구(nvm) 설치
+
+# nvm 설치 스크립트 실행
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+
+
+2.2. nvm 설치 완료 후 설정 파일 적용
+
+
+  (중요) zsh 쓸 때 기준이므로 기본 shell 쓰시는 분들은 환경 변수를 ~/.bashrc 에 설정해야 합니다.
+
+
+echo &amp;#39;export NVM_DIR...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>VirtualBox 네트워크 설정 (호스트 전용 어댑터, 어댑터에 브리지 조합)</title>
+    <link href="http://0.0.0.0:4000/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/" rel="alternate" type="text/html" title="VirtualBox 네트워크 설정 (호스트 전용 어댑터, 어댑터에 브리지 조합)" />
+    <published>2024-09-13T00:00:00+09:00</published>
+  
+    <updated>2024-09-14T13:36:24+09:00</updated>
+  
+    <id>http://0.0.0.0:4000/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/</id>
+    <content src="http://0.0.0.0:4000/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/" />
+    <author>
+      <name>Minho Choi</name>
+    </author>
+
+  
+    
+    <category term="개발 환경 설정" />
+    
+    <category term="VirtualBox" />
+    
+  
+
+  <summary>VirtualBox Ubuntu와 Windows가 서로 통신할 수 있으려면 VirtualBox의 네트워크 설정을 올바르게 구성해야 합니다.
+
+VirtualBox의 네트워크 모드는
+
+
+  NAT
+  NAT 네트워크
+  호스트 전용 어댑터
+  어댑터에 브리지
+  내부 네트워크
+
+
+등이 존재하지만, 일반적인 개발 환경에서는 NAT, 호스트 전용 어댑터, 어댑터에 브리지 정도만 사용되며, 네트워크 세팅에는 아래에서 소개할 2가지 방법이 주로 사용됩니다.
+
+먼저 각 모드에 대한 설명 이후 네트워크 설정 방법에 대해 기술하도록 하겠습니다.
+
+시간 없으신 분들은 2. 네트워크 설정 방법만 보시면 됩니다.
+
+1. 네트워크 모드
+
+아래에는 주로 쓰이는 3가지 모드에 대한 간략한 설명이 나와 있습니다. 좀더 상세한 설명...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>VirtualBox Samba 설정</title>
+    <link href="http://0.0.0.0:4000/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/" rel="alternate" type="text/html" title="VirtualBox Samba 설정" />
+    <published>2024-09-13T00:00:00+09:00</published>
+  
+    <updated>2024-09-14T13:36:24+09:00</updated>
+  
+    <id>http://0.0.0.0:4000/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/</id>
+    <content src="http://0.0.0.0:4000/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/" />
+    <author>
+      <name>Minho Choi</name>
+    </author>
+
+  
+    
+    <category term="개발 환경 설정" />
+    
+    <category term="VirtualBox" />
+    
+  
+
+  <summary></summary>
+
+  </entry>
+
+</feed>
+
+

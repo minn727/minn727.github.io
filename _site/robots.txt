@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://minn727.github.io/sitemap.xml
