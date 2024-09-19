@@ -1,0 +1,2179 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- `site.alt_lang` can specify a language different from the UI -->
+<html lang="ko" >
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+  ><!-- Setup Open Graph image -->
+
+  
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="Jekyll Chirpy 이용하여 블로그 만들기" />
+<meta property="og:locale" content="ko" />
+<meta name="description" content="기존에 Markdown 기반 노트 툴인 Obsidian을 사용하고 있었던지라, 블로그 운영에 크게 힘을 들이지 않을 수 있는 GitHub Blog를 플랫폼으로 선택했습니다. 그런데 이게 웬걸… 유명한 Jekyll theme인 Chirpy를 선택해서 블로그를 만드려고 했는데, 쉬울 것으로 예상했지만 예상과 다르게도 수많은 역경과 난관을 거치고 난 뒤에야 블로그 개설을 완료하게 되었습니다. 설치 방법이 나와 있는 블로그마다도 방법이 모두 다르고 필수적으로 수행해야 되는 내용들 또한 파편화 되어있어서 통합 Guideline을 만들고자 하는 마음에 해당 포스트를 작성하게 되었습니다. 제 개발 환경에서의 패키지 버전과 Chirpy 버전은 아래와 같습니다. 2024.09 기준 Chirpy: v7.1.0, Commit Hash = cbc9319 Ruby &amp; gem Ruby를 깔면 gem도 자동으로 설치가 되므로 Ruby 버전만 신경쓰면 됩니다. Ruby: v3.3.5 gem: v3.5.16 node &amp; npm node를 깔면 npm도 자동으로 설치가 되므로 node 버전만 신경쓰면 됩니다. node: v20.17.0 npm: v10.8.2 설치 방법 필요 패키지 설치 ruby, node 설치 아래 제가 작성한 다른 포스트를 보고 알맞은 버전을 설치해주시기 바랍니다. rvenv &amp; Ruby 설치 nvm &amp; Node 설치 jekyll, bundler 설치 아래 명령어를 입력하여 jekyll과 bundler를 설치합니다. 1 gem install jekyll bundler Local 환경에 테마 Clone하기 Chirpy-starter라는 매우 간편한 테마 설치 방법이 있지만, 이것보다는 커스터마이징 자유도가 훨씬 높은 Chirpy Fork를 통해 테마를 설치하도록 하겠습니다. Chirpy GitHub에서 아래와 같이 본인 레포지토리로 fork 해옵니다. Repository name은 꼭 [본인 username].github.io로 설정해주세요. Repository setting에서 branch 이름을 master에서 main으로 변경합니다. 아래 명령어를 통해 본인의 local 환경으로 clone 합니다. [username]에 본인의 github username을 넣으시면 됩니다. e.g., 저의 경우에는 git clone https://github.com/minn727/minn727.github.io.git 1 git clone https://github.com/[username]/[username].github.io.git 테마 초기화 테마를 본격적으로 사용하기 전에 tools/init.sh를 통해 initialize 해주는 과정을 거쳐야 하는데, 현재 버전 기준으로 바로 해당 script 파일을 실행하면 commit 순서가 꼬여서 조금 귀찮게 됩니다. 물론 고칠 수 있는 방법은 당연히 있지만, 귀찮음을 방지하기 위해 아래 내용도 꼭 순서대로 따라와 주시기 바랍니다. tools/init.sh 파일을 열고 reset_latest()에 있는 해당 행을 주석 처리합니다. 바뀐 내용을 commit하지 않으면 tools/init.sh 파일 실행이 불가능하므로 아래와 같이 명령어를 입력하여 스크립트 파일을 실행합니다. 1 2 3 git add -A git commit -m &quot;init.sh changed&quot; tools/init.sh 다음과 같이 Initialization successful! 이 뜬다면 잘 완료된 것입니다. 필요 Bundle 설치 아래 명령어를 통해 필요 bundle을 설치합니다. 1 bundle 다음과 같이 Bundle complete! 이 뜬다면 잘 완료된 것입니다. bundle fund 관련 내용은 error가 아니라 해당 패키지가 말 그대로 자금을 필요로 한다는 내용이어서 넘기면 됩니다. Local Test 위의 설치가 완료되었다면 아래 명령어를 통해 로컬에서 작동하는지 확인합니다. 아래 명령어를 입력 후, 웹브라우저에서 127.0.0.1:4000을 입력하였을 때 블로그가 정상적으로 표시되는 지를 확인하면 됩니다. tools/init.sh를 통한 초기화로 인해 sample post가 삭제되었기 때문에 빈 블로그가 뜨게 됩니다. 1 bundle exec jekyll serve 여기까지 완료되었으면 지금까지의 내용을 commit 하고, remote origin에 push해줍니다. 1 2 3 git add -A git commit -m &quot;first commit&quot; git push origin GitHub Pages 관련 수정 이제 GitHub repository에서 Build and deployment 관련 설정을 수정해주어야 합니다. 현재 구글링을 통해 설치 방법 여러개를 보고 테마를 설치하게 되면 해당 순서를 먼저 수행하기도 하는데, 그 경우 remote와 local의 commit이 달라서 git push가 안 되는 등의 에러가 발생할 수 있습니다. 따라서 위의 내용까지 모두 마친 이후에, GitHub Pages 관련 수정을 하는 것을 권장드립니다. Repository setting의 Pages 탭에 들어가서 GitHub Actions로 변경해줍니다. Commit changes… &gt; Sign off and commit changes를 눌러주게 되면 .github/workflows 폴더 안에 jekyll.yml 파일이 생성됩니다. 위의 파일이 생성되면서 자동으로 GitHub에서 하나의 commit을 생성하게 되므로, 아까 clone해온 local에서 git pull을 통해 추가된 jekyll.yml을 local로 가져옵니다. 1 git pull GitHub Actions에서 배포 확인하기 GitHub Actions 탭에서 배포가 잘 되고 있는지를 확인할 수 있습니다. 만약 위의 과정을 모두 순서대로 따라했다면 가장 마지막 commit은 Create jekyll.yml이 되어 있을 것입니다. 약 1분 정도를 기다린 이후 배포가 잘 되었다면 아래 그림과 같이 표시됩니다. 마무리 설치 이후에 플러그인 설치나 post 작성에 대해서는 다른 포스트 작성 이후 해당 게시글에 링크 걸겠습니다. 포스트 봐주셔서 감사합니다." />
+<meta property="og:description" content="기존에 Markdown 기반 노트 툴인 Obsidian을 사용하고 있었던지라, 블로그 운영에 크게 힘을 들이지 않을 수 있는 GitHub Blog를 플랫폼으로 선택했습니다. 그런데 이게 웬걸… 유명한 Jekyll theme인 Chirpy를 선택해서 블로그를 만드려고 했는데, 쉬울 것으로 예상했지만 예상과 다르게도 수많은 역경과 난관을 거치고 난 뒤에야 블로그 개설을 완료하게 되었습니다. 설치 방법이 나와 있는 블로그마다도 방법이 모두 다르고 필수적으로 수행해야 되는 내용들 또한 파편화 되어있어서 통합 Guideline을 만들고자 하는 마음에 해당 포스트를 작성하게 되었습니다. 제 개발 환경에서의 패키지 버전과 Chirpy 버전은 아래와 같습니다. 2024.09 기준 Chirpy: v7.1.0, Commit Hash = cbc9319 Ruby &amp; gem Ruby를 깔면 gem도 자동으로 설치가 되므로 Ruby 버전만 신경쓰면 됩니다. Ruby: v3.3.5 gem: v3.5.16 node &amp; npm node를 깔면 npm도 자동으로 설치가 되므로 node 버전만 신경쓰면 됩니다. node: v20.17.0 npm: v10.8.2 설치 방법 필요 패키지 설치 ruby, node 설치 아래 제가 작성한 다른 포스트를 보고 알맞은 버전을 설치해주시기 바랍니다. rvenv &amp; Ruby 설치 nvm &amp; Node 설치 jekyll, bundler 설치 아래 명령어를 입력하여 jekyll과 bundler를 설치합니다. 1 gem install jekyll bundler Local 환경에 테마 Clone하기 Chirpy-starter라는 매우 간편한 테마 설치 방법이 있지만, 이것보다는 커스터마이징 자유도가 훨씬 높은 Chirpy Fork를 통해 테마를 설치하도록 하겠습니다. Chirpy GitHub에서 아래와 같이 본인 레포지토리로 fork 해옵니다. Repository name은 꼭 [본인 username].github.io로 설정해주세요. Repository setting에서 branch 이름을 master에서 main으로 변경합니다. 아래 명령어를 통해 본인의 local 환경으로 clone 합니다. [username]에 본인의 github username을 넣으시면 됩니다. e.g., 저의 경우에는 git clone https://github.com/minn727/minn727.github.io.git 1 git clone https://github.com/[username]/[username].github.io.git 테마 초기화 테마를 본격적으로 사용하기 전에 tools/init.sh를 통해 initialize 해주는 과정을 거쳐야 하는데, 현재 버전 기준으로 바로 해당 script 파일을 실행하면 commit 순서가 꼬여서 조금 귀찮게 됩니다. 물론 고칠 수 있는 방법은 당연히 있지만, 귀찮음을 방지하기 위해 아래 내용도 꼭 순서대로 따라와 주시기 바랍니다. tools/init.sh 파일을 열고 reset_latest()에 있는 해당 행을 주석 처리합니다. 바뀐 내용을 commit하지 않으면 tools/init.sh 파일 실행이 불가능하므로 아래와 같이 명령어를 입력하여 스크립트 파일을 실행합니다. 1 2 3 git add -A git commit -m &quot;init.sh changed&quot; tools/init.sh 다음과 같이 Initialization successful! 이 뜬다면 잘 완료된 것입니다. 필요 Bundle 설치 아래 명령어를 통해 필요 bundle을 설치합니다. 1 bundle 다음과 같이 Bundle complete! 이 뜬다면 잘 완료된 것입니다. bundle fund 관련 내용은 error가 아니라 해당 패키지가 말 그대로 자금을 필요로 한다는 내용이어서 넘기면 됩니다. Local Test 위의 설치가 완료되었다면 아래 명령어를 통해 로컬에서 작동하는지 확인합니다. 아래 명령어를 입력 후, 웹브라우저에서 127.0.0.1:4000을 입력하였을 때 블로그가 정상적으로 표시되는 지를 확인하면 됩니다. tools/init.sh를 통한 초기화로 인해 sample post가 삭제되었기 때문에 빈 블로그가 뜨게 됩니다. 1 bundle exec jekyll serve 여기까지 완료되었으면 지금까지의 내용을 commit 하고, remote origin에 push해줍니다. 1 2 3 git add -A git commit -m &quot;first commit&quot; git push origin GitHub Pages 관련 수정 이제 GitHub repository에서 Build and deployment 관련 설정을 수정해주어야 합니다. 현재 구글링을 통해 설치 방법 여러개를 보고 테마를 설치하게 되면 해당 순서를 먼저 수행하기도 하는데, 그 경우 remote와 local의 commit이 달라서 git push가 안 되는 등의 에러가 발생할 수 있습니다. 따라서 위의 내용까지 모두 마친 이후에, GitHub Pages 관련 수정을 하는 것을 권장드립니다. Repository setting의 Pages 탭에 들어가서 GitHub Actions로 변경해줍니다. Commit changes… &gt; Sign off and commit changes를 눌러주게 되면 .github/workflows 폴더 안에 jekyll.yml 파일이 생성됩니다. 위의 파일이 생성되면서 자동으로 GitHub에서 하나의 commit을 생성하게 되므로, 아까 clone해온 local에서 git pull을 통해 추가된 jekyll.yml을 local로 가져옵니다. 1 git pull GitHub Actions에서 배포 확인하기 GitHub Actions 탭에서 배포가 잘 되고 있는지를 확인할 수 있습니다. 만약 위의 과정을 모두 순서대로 따라했다면 가장 마지막 commit은 Create jekyll.yml이 되어 있을 것입니다. 약 1분 정도를 기다린 이후 배포가 잘 되었다면 아래 그림과 같이 표시됩니다. 마무리 설치 이후에 플러그인 설치나 post 작성에 대해서는 다른 포스트 작성 이후 해당 게시글에 링크 걸겠습니다. 포스트 봐주셔서 감사합니다." />
+<link rel="canonical" href="https://minn727.github.io/posts/Jekyll-Chirpy-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/" />
+<meta property="og:url" content="https://minn727.github.io/posts/Jekyll-Chirpy-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/" />
+<meta property="og:site_name" content="Minn" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-09-14T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Jekyll Chirpy 이용하여 블로그 만들기" />
+<meta name="twitter:site" content="@twitter_username" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-09-14T17:05:47+09:00","datePublished":"2024-09-14T00:00:00+09:00","description":"기존에 Markdown 기반 노트 툴인 Obsidian을 사용하고 있었던지라, 블로그 운영에 크게 힘을 들이지 않을 수 있는 GitHub Blog를 플랫폼으로 선택했습니다. 그런데 이게 웬걸… 유명한 Jekyll theme인 Chirpy를 선택해서 블로그를 만드려고 했는데, 쉬울 것으로 예상했지만 예상과 다르게도 수많은 역경과 난관을 거치고 난 뒤에야 블로그 개설을 완료하게 되었습니다. 설치 방법이 나와 있는 블로그마다도 방법이 모두 다르고 필수적으로 수행해야 되는 내용들 또한 파편화 되어있어서 통합 Guideline을 만들고자 하는 마음에 해당 포스트를 작성하게 되었습니다. 제 개발 환경에서의 패키지 버전과 Chirpy 버전은 아래와 같습니다. 2024.09 기준 Chirpy: v7.1.0, Commit Hash = cbc9319 Ruby &amp; gem Ruby를 깔면 gem도 자동으로 설치가 되므로 Ruby 버전만 신경쓰면 됩니다. Ruby: v3.3.5 gem: v3.5.16 node &amp; npm node를 깔면 npm도 자동으로 설치가 되므로 node 버전만 신경쓰면 됩니다. node: v20.17.0 npm: v10.8.2 설치 방법 필요 패키지 설치 ruby, node 설치 아래 제가 작성한 다른 포스트를 보고 알맞은 버전을 설치해주시기 바랍니다. rvenv &amp; Ruby 설치 nvm &amp; Node 설치 jekyll, bundler 설치 아래 명령어를 입력하여 jekyll과 bundler를 설치합니다. 1 gem install jekyll bundler Local 환경에 테마 Clone하기 Chirpy-starter라는 매우 간편한 테마 설치 방법이 있지만, 이것보다는 커스터마이징 자유도가 훨씬 높은 Chirpy Fork를 통해 테마를 설치하도록 하겠습니다. Chirpy GitHub에서 아래와 같이 본인 레포지토리로 fork 해옵니다. Repository name은 꼭 [본인 username].github.io로 설정해주세요. Repository setting에서 branch 이름을 master에서 main으로 변경합니다. 아래 명령어를 통해 본인의 local 환경으로 clone 합니다. [username]에 본인의 github username을 넣으시면 됩니다. e.g., 저의 경우에는 git clone https://github.com/minn727/minn727.github.io.git 1 git clone https://github.com/[username]/[username].github.io.git 테마 초기화 테마를 본격적으로 사용하기 전에 tools/init.sh를 통해 initialize 해주는 과정을 거쳐야 하는데, 현재 버전 기준으로 바로 해당 script 파일을 실행하면 commit 순서가 꼬여서 조금 귀찮게 됩니다. 물론 고칠 수 있는 방법은 당연히 있지만, 귀찮음을 방지하기 위해 아래 내용도 꼭 순서대로 따라와 주시기 바랍니다. tools/init.sh 파일을 열고 reset_latest()에 있는 해당 행을 주석 처리합니다. 바뀐 내용을 commit하지 않으면 tools/init.sh 파일 실행이 불가능하므로 아래와 같이 명령어를 입력하여 스크립트 파일을 실행합니다. 1 2 3 git add -A git commit -m &quot;init.sh changed&quot; tools/init.sh 다음과 같이 Initialization successful! 이 뜬다면 잘 완료된 것입니다. 필요 Bundle 설치 아래 명령어를 통해 필요 bundle을 설치합니다. 1 bundle 다음과 같이 Bundle complete! 이 뜬다면 잘 완료된 것입니다. bundle fund 관련 내용은 error가 아니라 해당 패키지가 말 그대로 자금을 필요로 한다는 내용이어서 넘기면 됩니다. Local Test 위의 설치가 완료되었다면 아래 명령어를 통해 로컬에서 작동하는지 확인합니다. 아래 명령어를 입력 후, 웹브라우저에서 127.0.0.1:4000을 입력하였을 때 블로그가 정상적으로 표시되는 지를 확인하면 됩니다. tools/init.sh를 통한 초기화로 인해 sample post가 삭제되었기 때문에 빈 블로그가 뜨게 됩니다. 1 bundle exec jekyll serve 여기까지 완료되었으면 지금까지의 내용을 commit 하고, remote origin에 push해줍니다. 1 2 3 git add -A git commit -m &quot;first commit&quot; git push origin GitHub Pages 관련 수정 이제 GitHub repository에서 Build and deployment 관련 설정을 수정해주어야 합니다. 현재 구글링을 통해 설치 방법 여러개를 보고 테마를 설치하게 되면 해당 순서를 먼저 수행하기도 하는데, 그 경우 remote와 local의 commit이 달라서 git push가 안 되는 등의 에러가 발생할 수 있습니다. 따라서 위의 내용까지 모두 마친 이후에, GitHub Pages 관련 수정을 하는 것을 권장드립니다. Repository setting의 Pages 탭에 들어가서 GitHub Actions로 변경해줍니다. Commit changes… &gt; Sign off and commit changes를 눌러주게 되면 .github/workflows 폴더 안에 jekyll.yml 파일이 생성됩니다. 위의 파일이 생성되면서 자동으로 GitHub에서 하나의 commit을 생성하게 되므로, 아까 clone해온 local에서 git pull을 통해 추가된 jekyll.yml을 local로 가져옵니다. 1 git pull GitHub Actions에서 배포 확인하기 GitHub Actions 탭에서 배포가 잘 되고 있는지를 확인할 수 있습니다. 만약 위의 과정을 모두 순서대로 따라했다면 가장 마지막 commit은 Create jekyll.yml이 되어 있을 것입니다. 약 1분 정도를 기다린 이후 배포가 잘 되었다면 아래 그림과 같이 표시됩니다. 마무리 설치 이후에 플러그인 설치나 post 작성에 대해서는 다른 포스트 작성 이후 해당 게시글에 링크 걸겠습니다. 포스트 봐주셔서 감사합니다.","headline":"Jekyll Chirpy 이용하여 블로그 만들기","mainEntityOfPage":{"@type":"WebPage","@id":"https://minn727.github.io/posts/Jekyll-Chirpy-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/"},"url":"https://minn727.github.io/posts/Jekyll-Chirpy-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <title>Jekyll Chirpy 이용하여 블로그 만들기 | Minn
+  </title>
+
+  <!--
+  The Favicons for Web, Android, Microsoft, and iOS (iPhone and iPad) Apps
+  Generated by: https://realfavicongenerator.net/
+-->
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+
+  <link rel="manifest" href="/assets/img/favicons/site.webmanifest">
+
+<link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="Minn">
+<meta name="application-name" content="Minn">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+  <!-- Resource Hints -->
+  
+    
+      
+        <link rel="preconnect" href="https://fonts.googleapis.com" >
+      
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" >
+      
+    
+      
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" >
+      
+    
+      
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" >
+      
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" >
+      
+    
+  
+
+  <!-- Bootstrap -->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/css/jekyll-theme-chirpy.css">
+
+  <!-- Web Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+
+  <!-- 3rd-party Dependencies -->
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.29.0/dist/tocbot.min.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css">
+  
+
+  
+    <!-- Image Popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
+  
+
+  <!-- JavaScript -->
+
+  
+    <!-- Switch the mode between dark and light. -->
+
+<script type="text/javascript">
+  class ModeToggle {
+    static get MODE_KEY() {
+      return 'mode';
+    }
+    static get MODE_ATTR() {
+      return 'data-mode';
+    }
+    static get DARK_MODE() {
+      return 'dark';
+    }
+    static get LIGHT_MODE() {
+      return 'light';
+    }
+    static get ID() {
+      return 'mode-toggle';
+    }
+
+    constructor() {
+      let self = this;this.sysDarkPrefers.addEventListener('change', () => {
+        if (self.hasMode) {
+          self.clearMode();
+        }
+        self.notify();
+      });
+
+      if (!this.hasMode) {
+        return;
+      }
+
+      if (this.isDarkMode) {
+        this.setDark();
+      } else {
+        this.setLight();
+      }
+    }
+
+    get sysDarkPrefers() {
+      return window.matchMedia('(prefers-color-scheme: dark)');
+    }
+
+    get isPreferDark() {
+      return this.sysDarkPrefers.matches;
+    }
+
+    get isDarkMode() {
+      return this.mode === ModeToggle.DARK_MODE;
+    }
+
+    get hasMode() {
+      return this.mode != null;
+    }
+
+    get mode() {
+      return sessionStorage.getItem(ModeToggle.MODE_KEY);
+    }get modeStatus() {
+      if (this.hasMode) {
+        return this.mode;
+      } else {
+        return this.isPreferDark ? ModeToggle.DARK_MODE : ModeToggle.LIGHT_MODE;
+      }
+    }
+
+    setDark() {
+      document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+    }
+
+    setLight() {
+      document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+    }
+
+    clearMode() {
+      document.documentElement.removeAttribute(ModeToggle.MODE_ATTR);
+      sessionStorage.removeItem(ModeToggle.MODE_KEY);
+    }notify() {
+      window.postMessage(
+        {
+          direction: ModeToggle.ID,
+          message: this.modeStatus
+        },
+        '*'
+      );
+    }
+
+    flipMode() {
+      if (this.hasMode) {
+        this.clearMode();
+      } else {
+        if (this.isPreferDark) {
+          this.setLight();
+        } else {
+          this.setDark();
+        }
+      }
+
+      this.notify();
+    }
+  }
+
+  const modeToggle = new ModeToggle();
+</script>
+
+  
+
+  <!-- A placeholder to allow defining custom metadata -->
+
+</head>
+
+
+  <body>
+    <!-- The Side Bar -->
+
+<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
+  <header class="profile-wrapper">
+    <a href="/" id="avatar" class="rounded-circle"></a>
+
+    <h1 class="site-title">
+      <a href="/">Minn</a>
+    </h1>
+    <p class="site-subtitle fst-italic mb-0">개발 공부 Archive</p>
+  </header>
+  <!-- .profile-wrapper -->
+
+  <nav class="flex-column flex-grow-1 w-100 ps-0">
+    <ul class="nav">
+      <!-- home -->
+      <li class="nav-item">
+        <a href="/" class="nav-link">
+          <i class="fa-fw fas fa-home"></i>
+          <span>HOME</span>
+        </a>
+      </li>
+      <!-- the real tabs -->
+      
+        <li class="nav-item">
+          <a href="/categories/" class="nav-link">
+            <i class="fa-fw fas fa-stream"></i>
+            
+
+            <span>CATEGORIES</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+        <li class="nav-item">
+          <a href="/tags/" class="nav-link">
+            <i class="fa-fw fas fa-tags"></i>
+            
+
+            <span>TAGS</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+        <li class="nav-item">
+          <a href="/archives/" class="nav-link">
+            <i class="fa-fw fas fa-archive"></i>
+            
+
+            <span>ARCHIVES</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+        <li class="nav-item">
+          <a href="/about/" class="nav-link">
+            <i class="fa-fw fas fa-info-circle"></i>
+            
+
+            <span>ABOUT</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+    </ul>
+  </nav>
+
+  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
+    
+      <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+        <i class="fas fa-adjust"></i>
+      </button>
+
+      
+        <span class="icon-border"></span>
+      
+    
+
+    
+      
+
+      
+        <a
+          href="https://github.com/minn727"
+          aria-label="github"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://twitter.com/twitter_username"
+          aria-label="twitter"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="javascript:location.href = 'mailto:' + ['minho','mobilint.com'].join('@')"
+          aria-label="email"
+          
+
+          
+
+          
+
+          
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="/feed.xml"
+          aria-label="rss"
+          
+
+          
+
+          
+
+          
+        >
+          <i class="fas fa-rss"></i>
+        </a>
+      
+    
+  </div>
+  <!-- .sidebar-bottom -->
+</aside>
+<!-- #sidebar -->
+
+
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div class="container d-flex flex-column px-xxl-5">
+        <!-- The Top Bar -->
+
+<header id="topbar-wrapper" aria-label="Top Bar">
+  <div
+    id="topbar"
+    class="d-flex align-items-center justify-content-between px-lg-3 h-100"
+  >
+    <nav id="breadcrumb" aria-label="Breadcrumb">
+      
+
+      
+        
+          
+            <span>
+              <a href="/">Home</a>
+            </span>
+
+          
+        
+          
+        
+          
+            
+              <span>Jekyll Chirpy 이용하여 블로그 만들기</span>
+            
+
+          
+        
+      
+    </nav>
+    <!-- endof #breadcrumb -->
+
+    <button type="button" id="sidebar-trigger" class="btn btn-link">
+      <i class="fas fa-bars fa-fw"></i>
+    </button>
+
+    <div id="topbar-title">
+      Post
+    </div>
+
+    <button type="button" id="search-trigger" class="btn btn-link">
+      <i class="fas fa-search fa-fw"></i>
+    </button>
+
+    <search id="search" class="align-items-center ms-3 ms-lg-0">
+      <i class="fas fa-search fa-fw"></i>
+      <input
+        class="form-control"
+        id="search-input"
+        type="search"
+        aria-label="search"
+        autocomplete="off"
+        placeholder="Search..."
+      >
+    </search>
+    <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">Cancel</button>
+  </div>
+</header>
+
+
+        <div class="row flex-grow-1">
+          <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            
+              <!-- Refactor the HTML structure -->
+
+
+
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
+
+
+
+<!--
+  Fixed kramdown code highlight rendering:
+  https://github.com/penibelst/jekyll-compress-html/issues/101
+  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
+-->
+
+
+
+<!-- Change the icon of checkbox -->
+
+
+
+<!-- Handle images -->
+
+
+
+
+  
+  
+
+  
+    
+      
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+
+  
+
+
+<!-- Add header for code snippets -->
+
+
+
+<!-- Create heading anchors -->
+
+
+
+
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
+  
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
+  
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
+  
+
+  
+  
+
+  
+
+
+
+
+<!-- return -->
+
+
+
+
+<article class="px-1">
+  <header>
+    <h1 data-toc-skip>Jekyll Chirpy 이용하여 블로그 만들기</h1>
+    
+
+    <div class="post-meta text-muted">
+      <!-- published date -->
+      <span>
+        Posted
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1726239600"
+  data-df="ll"
+  
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+  
+>
+  Sep 14, 2024
+</time>
+
+      </span>
+
+      <!-- lastmod date -->
+      
+        <span>
+          Updated
+          <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1726301147"
+  data-df="ll"
+  
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+  
+>
+  Sep 14, 2024
+</time>
+
+        </span>
+      
+
+      
+
+      <div class="d-flex justify-content-between">
+        <!-- author(s) -->
+        <span>
+          
+
+          By
+
+          <em>
+            
+              <a href="https://twitter.com/username">Minho Choi</a>
+            
+          </em>
+        </span>
+
+        <div>
+          <!-- pageviews -->
+          
+
+          <!-- read time -->
+          <!-- Calculate the post's reading time, and display the word count in tooltip -->
+
+
+
+<!-- words per minute -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span
+  class="readtime"
+  data-bs-toggle="tooltip"
+  data-bs-placement="bottom"
+  title="1468 words"
+>
+  <em>8 min</em> read</span>
+
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+    <p>기존에 Markdown 기반 노트 툴인 Obsidian을 사용하고 있었던지라, 블로그 운영에 크게 힘을 들이지 않을 수 있는 GitHub Blog를 플랫폼으로 선택했습니다.</p>
+
+<p>그런데 이게 웬걸… 유명한 Jekyll theme인 Chirpy를 선택해서 블로그를 만드려고 했는데, 쉬울 것으로 예상했지만 예상과 다르게도 수많은 역경과 난관을 거치고 난 뒤에야 블로그 개설을 완료하게 되었습니다. 설치 방법이 나와 있는 블로그마다도 방법이 모두 다르고 필수적으로 수행해야 되는 내용들 또한 파편화 되어있어서 통합 Guideline을 만들고자 하는 마음에 해당 포스트를 작성하게 되었습니다.</p>
+
+<p>제 개발 환경에서의 패키지 버전과 Chirpy 버전은 아래와 같습니다.</p>
+
+<ul>
+  <li>2024.09 기준</li>
+  <li>Chirpy: v7.1.0, Commit Hash = cbc9319</li>
+  <li>Ruby &amp; gem
+    <ul>
+      <li>Ruby를 깔면 gem도 자동으로 설치가 되므로 <span style="color:red">Ruby 버전만 신경쓰면 됩니다.</span></li>
+      <li>Ruby: v3.3.5</li>
+      <li>gem: v3.5.16</li>
+    </ul>
+  </li>
+  <li>node &amp; npm
+    <ul>
+      <li>node를 깔면 npm도 자동으로 설치가 되므로 <span style="color:red">node 버전만 신경쓰면 됩니다.</span></li>
+      <li>node: v20.17.0</li>
+      <li>npm: v10.8.2</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="설치-방법">설치 방법</h1>
+
+<h3 id="필요-패키지-설치"><span class="me-2">필요 패키지 설치</span><a href="#필요-패키지-설치" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<h4 id="ruby-node-설치"><span class="me-2">ruby, node 설치</span><a href="#ruby-node-설치" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<ul>
+  <li>아래 제가 작성한 다른 포스트를 보고 알맞은 버전을 설치해주시기 바랍니다.
+    <ul>
+      <li><a href="/posts/rbenv%EB%A1%9C-Ruby-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/"><strong>rvenv &amp; Ruby 설치</strong></a></li>
+      <li><a href="/posts/nvm%EC%9C%BC%EB%A1%9C-node-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/"><strong>nvm &amp; Node 설치</strong></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="jekyll-bundler-설치"><span class="me-2">jekyll, bundler 설치</span><a href="#jekyll-bundler-설치" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<ul>
+  <li>아래 명령어를 입력하여 <code class="language-plaintext highlighter-rouge">jekyll</code>과 <code class="language-plaintext highlighter-rouge">bundler</code>를 설치합니다.</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>gem <span class="nb">install </span>jekyll bundler
+</pre></td></tr></tbody></table></code></div></div>
+
+<h3 id="local-환경에-테마-clone하기"><span class="me-2">Local 환경에 테마 Clone하기</span><a href="#local-환경에-테마-clone하기" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Chirpy-starter라는 매우 간편한 테마 설치 방법이 있지만, 이것보다는 커스터마이징 자유도가 훨씬 높은 Chirpy Fork를 통해 테마를 설치하도록 하겠습니다.</p>
+
+<ul>
+  <li><a href="https://github.com/cotes2020/jekyll-theme-chirpy"><strong>Chirpy GitHub</strong></a>에서 아래와 같이 본인 레포지토리로 fork 해옵니다.</li>
+  <li>Repository name은 꼭 <code class="language-plaintext highlighter-rouge">[본인 username].github.io</code>로 설정해주세요.</li>
+</ul>
+
+<p><a href="/assets/img/posts/Blog/스크린샷 2024-09-14 163517.png" class="popup img-link  shimmer"><img src="/assets/img/posts/Blog/스크린샷 2024-09-14 163517.png" alt="alt text" loading="lazy"></a>
+<a href="/assets/img/posts/Blog/스크린샷 2024-09-13 213641.png" class="popup img-link  shimmer"><img src="/assets/img/posts/Blog/스크린샷 2024-09-13 213641.png" alt="alt text" loading="lazy"></a></p>
+
+<ul>
+  <li>Repository setting에서 branch 이름을 master에서 main으로 변경합니다.</li>
+</ul>
+
+<p><a href="/assets/img/posts/Blog/스크린샷 2024-09-13 213724.png" class="popup img-link  shimmer"><img src="/assets/img/posts/Blog/스크린샷 2024-09-13 213724.png" alt="alt text" loading="lazy"></a></p>
+
+<ul>
+  <li>아래 명령어를 통해 본인의 local 환경으로 clone 합니다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">[username]</code>에 본인의 github username을 넣으시면 됩니다.</li>
+      <li>e.g., 저의 경우에는 <code class="language-plaintext highlighter-rouge">git clone https://github.com/minn727/minn727.github.io.git</code></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>git clone https://github.com/[username]/[username].github.io.git
+</pre></td></tr></tbody></table></code></div></div>
+
+<h3 id="테마-초기화"><span class="me-2">테마 초기화</span><a href="#테마-초기화" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>테마를 본격적으로 사용하기 전에 <code class="language-plaintext highlighter-rouge">tools/init.sh</code>를 통해 initialize 해주는 과정을 거쳐야 하는데, 현재 버전 기준으로 바로 해당 script 파일을 실행하면 commit 순서가 꼬여서 조금 귀찮게 됩니다.</p>
+
+<p>물론 고칠 수 있는 방법은 당연히 있지만, 귀찮음을 방지하기 위해 아래 내용도 <span style="color:red"><strong>꼭 순서대로</strong></span> 따라와 주시기 바랍니다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">tools/init.sh</code> 파일을 열고 <code class="language-plaintext highlighter-rouge">reset_latest()</code>에 있는 해당 행을 주석 처리합니다.</li>
+</ul>
+
+<p><a href="/assets/img/posts/Blog/스크린샷 2024-09-13 213948.png" class="popup img-link  shimmer"><img src="/assets/img/posts/Blog/스크린샷 2024-09-13 213948.png" alt="alt text" loading="lazy"></a></p>
+
+<ul>
+  <li>바뀐 내용을 commit하지 않으면 <code class="language-plaintext highlighter-rouge">tools/init.sh</code> 파일 실행이 불가능하므로 아래와 같이 명령어를 입력하여 스크립트 파일을 실행합니다.</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>git add <span class="nt">-A</span>
+git commit <span class="nt">-m</span> <span class="s2">"init.sh changed"</span>
+tools/init.sh
+</pre></td></tr></tbody></table></code></div></div>
+
+<ul>
+  <li>다음과 같이 Initialization successful! 이 뜬다면 잘 완료된 것입니다.</li>
+</ul>
+
+<p><a href="/assets/img/posts/Blog/스크린샷 2024-09-13 214412.png" class="popup img-link  shimmer"><img src="/assets/img/posts/Blog/스크린샷 2024-09-13 214412.png" alt="alt text" loading="lazy"></a></p>
+
+<h3 id="필요-bundle-설치"><span class="me-2">필요 Bundle 설치</span><a href="#필요-bundle-설치" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<ul>
+  <li>아래 명령어를 통해 필요 bundle을 설치합니다.</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>bundle
+</pre></td></tr></tbody></table></code></div></div>
+
+<ul>
+  <li>다음과 같이 Bundle complete! 이 뜬다면 잘 완료된 것입니다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">bundle fund</code> 관련 내용은 error가 아니라 해당 패키지가 말 그대로 자금을 필요로 한다는 내용이어서 넘기면 됩니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><a href="/assets/img/posts/Blog/스크린샷 2024-09-13 214427.png" class="popup img-link  shimmer"><img src="/assets/img/posts/Blog/스크린샷 2024-09-13 214427.png" alt="alt text" loading="lazy"></a></p>
+
+<h3 id="local-test"><span class="me-2">Local Test</span><a href="#local-test" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<ul>
+  <li>위의 설치가 완료되었다면 아래 명령어를 통해 로컬에서 작동하는지 확인합니다.</li>
+  <li>아래 명령어를 입력 후, 웹브라우저에서 127.0.0.1:4000을 입력하였을 때 블로그가 정상적으로 표시되는 지를 확인하면 됩니다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">tools/init.sh</code>를 통한 초기화로 인해 sample post가 삭제되었기 때문에 빈 블로그가 뜨게 됩니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>bundle <span class="nb">exec </span>jekyll serve
+</pre></td></tr></tbody></table></code></div></div>
+
+<ul>
+  <li>여기까지 완료되었으면 지금까지의 내용을 commit 하고, remote origin에 push해줍니다.</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>git add <span class="nt">-A</span>
+git commit <span class="nt">-m</span> <span class="s2">"first commit"</span>
+git push origin
+</pre></td></tr></tbody></table></code></div></div>
+
+<h3 id="github-pages-관련-수정"><span class="me-2">GitHub Pages 관련 수정</span><a href="#github-pages-관련-수정" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>이제 GitHub repository에서 Build and deployment 관련 설정을 수정해주어야 합니다. 현재 구글링을 통해 설치 방법 여러개를 보고 테마를 설치하게 되면 해당 순서를 먼저 수행하기도 하는데, 그 경우 remote와 local의 commit이 달라서 git push가 안 되는 등의 에러가 발생할 수 있습니다.</p>
+
+<p>따라서 위의 내용까지 모두 마친 이후에, GitHub Pages 관련 수정을 하는 것을 권장드립니다.</p>
+
+<ul>
+  <li>Repository setting의 Pages 탭에 들어가서 <strong>GitHub Actions</strong>로 변경해줍니다.</li>
+</ul>
+
+<p><a href="/assets/img/posts/Blog/스크린샷 2024-09-13 214442.png" class="popup img-link  shimmer"><img src="/assets/img/posts/Blog/스크린샷 2024-09-13 214442.png" alt="alt text" loading="lazy"></a></p>
+
+<ul>
+  <li><strong>Commit changes… &gt; Sign off and commit changes</strong>를 눌러주게 되면 <code class="language-plaintext highlighter-rouge">.github/workflows</code> 폴더 안에 <code class="language-plaintext highlighter-rouge">jekyll.yml</code> 파일이 생성됩니다.</li>
+</ul>
+
+<p><a href="/assets/img/posts/Blog/스크린샷 2024-09-13 214455.png" class="popup img-link  shimmer"><img src="/assets/img/posts/Blog/스크린샷 2024-09-13 214455.png" alt="alt text" loading="lazy"></a></p>
+
+<ul>
+  <li>위의 파일이 생성되면서 자동으로 GitHub에서 하나의 commit을 생성하게 되므로, 아까 clone해온 local에서 <code class="language-plaintext highlighter-rouge">git pull</code>을 통해 추가된 <code class="language-plaintext highlighter-rouge">jekyll.yml</code>을 local로 가져옵니다.</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>git pull
+</pre></td></tr></tbody></table></code></div></div>
+
+<h3 id="github-actions에서-배포-확인하기"><span class="me-2">GitHub Actions에서 배포 확인하기</span><a href="#github-actions에서-배포-확인하기" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<ul>
+  <li>GitHub Actions 탭에서 배포가 잘 되고 있는지를 확인할 수 있습니다.
+    <ul>
+      <li>만약 위의 과정을 모두 순서대로 따라했다면 가장 마지막 commit은 <strong>Create jekyll.yml</strong>이 되어 있을 것입니다.</li>
+    </ul>
+  </li>
+  <li>약 1분 정도를 기다린 이후 배포가 잘 되었다면 아래 그림과 같이 표시됩니다.</li>
+</ul>
+
+<p><a href="/assets/img/posts/Blog/스크린샷 2024-09-14 170239.png" class="popup img-link  shimmer"><img src="/assets/img/posts/Blog/스크린샷 2024-09-14 170239.png" alt="alt text" loading="lazy"></a>
+<a href="/assets/img/posts/Blog/스크린샷 2024-09-14 170223.png" class="popup img-link  shimmer"><img src="/assets/img/posts/Blog/스크린샷 2024-09-14 170223.png" alt="alt text" loading="lazy"></a></p>
+
+<h2 id="마무리"><span class="me-2">마무리</span><a href="#마무리" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>설치 이후에 플러그인 설치나 post 작성에 대해서는 다른 포스트 작성 이후 해당 게시글에 링크 걸겠습니다.
+포스트 봐주셔서 감사합니다.</p>
+
+  </div>
+
+  <div class="post-tail-wrapper text-muted">
+    <!-- categories -->
+    
+      <div class="post-meta mb-3">
+        <i class="far fa-folder-open fa-fw me-1"></i>
+        
+          <a href="/categories/github-blog/">GitHub Blog</a>
+      </div>
+    
+
+    <!-- tags -->
+    
+
+    <div
+      class="
+        post-tail-bottom
+        d-flex justify-content-between align-items-center mt-5 pb-2
+      "
+    >
+      <div class="license-wrapper">
+        
+          
+
+          This post is licensed under 
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>
+         by the author.
+        
+      </div>
+
+      <!-- Post sharing snippet -->
+
+<div class="share-wrapper d-flex align-items-center">
+  <span class="share-label text-muted">Share</span>
+  <span class="share-icons">
+    
+    
+    
+
+    
+
+      
+
+      <a href="https://twitter.com/intent/tweet?text=Jekyll%20Chirpy%20%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20-%20Minn&url=https%3A%2F%2Fminn727.github.io%2Fposts%2FJekyll-Chirpy-%25EC%259D%25B4%25EC%259A%25A9%25ED%2595%2598%25EC%2597%25AC-%25EB%25B8%2594%25EB%25A1%259C%25EA%25B7%25B8-%25EB%25A7%258C%25EB%2593%25A4%25EA%25B8%25B0%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+        <i class="fa-fw fa-brands fa-square-x-twitter"></i>
+      </a>
+    
+
+      
+
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Jekyll%20Chirpy%20%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20-%20Minn&u=https%3A%2F%2Fminn727.github.io%2Fposts%2FJekyll-Chirpy-%25EC%259D%25B4%25EC%259A%25A9%25ED%2595%2598%25EC%2597%25AC-%25EB%25B8%2594%25EB%25A1%259C%25EA%25B7%25B8-%25EB%25A7%258C%25EB%2593%25A4%25EA%25B8%25B0%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+    
+
+      
+
+      <a href="https://t.me/share/url?url=https%3A%2F%2Fminn727.github.io%2Fposts%2FJekyll-Chirpy-%25EC%259D%25B4%25EC%259A%25A9%25ED%2595%2598%25EC%2597%25AC-%25EB%25B8%2594%25EB%25A1%259C%25EA%25B7%25B8-%25EB%25A7%258C%25EB%2593%25A4%25EA%25B8%25B0%2F&text=Jekyll%20Chirpy%20%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20-%20Minn" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+        <i class="fa-fw fab fa-telegram"></i>
+      </a>
+    
+
+    <button
+      id="copy-link"
+      aria-label="Copy link"
+      class="btn small"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+      <i class="fa-fw fas fa-link pe-none fs-6"></i>
+    </button>
+  </span>
+</div>
+
+    </div>
+    <!-- .post-tail-bottom -->
+  </div>
+  <!-- div.post-tail-wrapper -->
+</article>
+
+
+            
+          </main>
+
+          <!-- panel -->
+          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
+            <div class="access">
+              <!-- Get 5 last posted/updated posts -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section id="access-lastmod">
+    <h2 class="panel-heading">Recently Updated</h2>
+    <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/PCIe-Express-Technology-%EA%B0%9C%EC%9A%94/">PCIe Express Technology 개요</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/Jekyll-Chirpy-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/">Jekyll Chirpy 이용하여 블로그 만들기</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/Ubuntu-%EC%84%A4%EC%B9%98-%ED%9B%84-%ED%95%84%EC%88%98-%EC%84%B8%ED%8C%85-%EC%B4%9D%EC%A0%95%EB%A6%AC/">Ubuntu 설치 후 필수 세팅 총정리</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/">VirtualBox Samba 설정</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/">VirtualBox 네트워크 설정 (호스트 전용 어댑터, 어댑터에 브리지 조합)</a>
+        </li>
+      
+    </ul>
+  </section>
+  <!-- #access-lastmod -->
+
+
+              <!-- The trending tags list -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+            
+              
+              
+
+
+
+  <section id="toc-wrapper" class="d-none ps-0 pe-4">
+    <h2 class="panel-heading ps-3 mb-2">Contents</h2>
+    <nav id="toc"></nav>
+  </section>
+
+
+            
+          </aside>
+        </div>
+
+        <div class="row">
+          <!-- tail -->
+          <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            
+              
+              <!-- Recommend the other 3 posts according to the tags and categories of the current post. -->
+
+<!-- The total size of related posts -->
+
+
+<!-- An random integer that bigger than 0 -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+            
+              
+              <!-- Navigation buttons at the bottom of the post. -->
+
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  
+  
+
+  
+    <a
+      href="/posts/rbenv%EB%A1%9C-Ruby-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/"
+      class="btn btn-outline-primary"
+      aria-label="Older"
+    >
+      <p>rbenv로 Ruby 설치하기</p>
+    </a>
+  
+
+  
+    <a
+      href="/posts/pyenv%EB%A1%9C-Python-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/"
+      class="btn btn-outline-primary"
+      aria-label="Newer"
+    >
+      <p>pyenv로 Python 설치하기</p>
+    </a>
+  
+</nav>
+
+            
+              
+              <!-- The comments switcher -->
+
+
+            
+
+            <!-- The Footer -->
+
+<footer
+  aria-label="Site Info"
+  class="
+    d-flex flex-column justify-content-center text-muted
+    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
+  "
+>
+  <p>©
+    <time>2024</time>
+
+    
+      <a href="https://twitter.com/username">Minho Choi</a>.
+    
+
+    
+      <span
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author."
+      >Some rights reserved.</span>
+    
+  </p>
+
+  <p>Using the <a
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="v7.1.0"
+        href="https://github.com/cotes2020/jekyll-theme-chirpy"
+        target="_blank"
+        rel="noopener"
+      >Chirpy</a> theme for <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>.
+  </p>
+</footer>
+
+          </div>
+        </div>
+
+        <!-- The Search results -->
+
+<div id="search-result-wrapper" class="d-flex justify-content-center d-none">
+  <div class="col-11 content">
+    <div id="search-hints">
+      <!-- The trending tags list -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+  </div>
+</div>
+
+      </div>
+
+      <aside aria-label="Scroll to Top">
+        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+          <i class="fas fa-angle-up"></i>
+        </button>
+      </aside>
+    </div>
+
+    <div id="mask"></div>
+
+    
+      <aside
+  id="notification"
+  class="toast"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+  data-bs-animation="true"
+  data-bs-autohide="false"
+>
+  <div class="toast-header">
+    <button
+      type="button"
+      class="btn-close ms-auto"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="toast-body text-center pt-0">
+    <p class="px-2 mb-3">A new version of content is available.</p>
+    <button type="button" class="btn btn-primary" aria-label="Update">
+      Update
+    </button>
+  </div>
+</aside>
+
+    
+
+    <!-- JavaScripts -->
+    <!-- JS selector for site. -->
+
+<!-- commons -->
+
+
+
+<!-- layout specified -->
+
+
+  
+
+  
+    <!-- image lazy-loading & popup & clipboard -->
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.29.0/dist/tocbot.min.js"></script>
+
+
+
+
+
+
+
+<script src="/assets/js/dist/post.min.js"></script>
+
+
+
+<!-- Pageviews -->
+
+  
+
+  
+
+
+
+
+
+
+
+    <!--
+  Jekyll Simple Search loader
+  See: <https://github.com/christian-fei/Simple-Jekyll-Search>
+-->
+
+
+
+
+
+<script>SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('search-results'),
+    json: '/assets/js/data/search.json',
+    searchResultTemplate: '  <article class="px-1 px-sm-2 px-lg-4 px-xl-0">    <header>      <h2><a href="{url}">{title}</a></h2>      <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">        {categories}        {tags}      </div>    </header>    <p>{snippet}</p>  </article>',
+    noResultsText: '<p class="mt-5">Oops! No results found.</p>',
+    templateMiddleware: function(prop, value, template) {
+      if (prop === 'categories') {
+        if (value === '') {
+          return `${value}`;
+        } else {
+          return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+        }
+      }
+
+      if (prop === 'tags') {
+        if (value === '') {
+          return `${value}`;
+        } else {
+          return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+        }
+      }
+    }
+  });
+</script>
+
+  </body>
+</html>
+

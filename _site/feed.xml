@@ -4,7 +4,7 @@
   <id>https://minn727.github.io/</id>
   <title>Minn</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2024-09-14T15:10:02+09:00</updated>
+  <updated>2024-09-20T01:26:19+09:00</updated>
   <author>
     <name>Minho Choi</name>
     <uri>https://minn727.github.io/</uri>
@@ -17,6 +17,32 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>PCIe Express Technology 개요</title>
+    <link href="https://minn727.github.io/posts/PCIe-Express-Technology-%EA%B0%9C%EC%9A%94/" rel="alternate" type="text/html" title="PCIe Express Technology 개요" />
+    <published>2024-09-20T00:00:00+09:00</published>
+  
+    <updated>2024-09-20T01:25:56+09:00</updated>
+  
+    <id>https://minn727.github.io/posts/PCIe-Express-Technology-%EA%B0%9C%EC%9A%94/</id>
+    <content src="https://minn727.github.io/posts/PCIe-Express-Technology-%EA%B0%9C%EC%9A%94/" />
+    <author>
+      <name>Minho Choi</name>
+    </author>
+
+  
+    
+    <category term="PCIe &amp; CXL" />
+    
+    <category term="PCIe" />
+    
+  
+
+  <summary></summary>
+
+  </entry>
 
   
   <entry>
@@ -56,6 +82,38 @@ sudo apt update
 sudo apt install -y make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
 libncurses5-dev libncursesw5-dev xz-u...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Jekyll Chirpy 이용하여 블로그 만들기</title>
+    <link href="https://minn727.github.io/posts/Jekyll-Chirpy-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/" rel="alternate" type="text/html" title="Jekyll Chirpy 이용하여 블로그 만들기" />
+    <published>2024-09-14T00:00:00+09:00</published>
+  
+    <updated>2024-09-14T17:05:47+09:00</updated>
+  
+    <id>https://minn727.github.io/posts/Jekyll-Chirpy-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/</id>
+    <content src="https://minn727.github.io/posts/Jekyll-Chirpy-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/" />
+    <author>
+      <name>Minho Choi</name>
+    </author>
+
+  
+    
+    <category term="GitHub Blog" />
+    
+  
+
+  <summary>기존에 Markdown 기반 노트 툴인 Obsidian을 사용하고 있었던지라, 블로그 운영에 크게 힘을 들이지 않을 수 있는 GitHub Blog를 플랫폼으로 선택했습니다.
+
+그런데 이게 웬걸… 유명한 Jekyll theme인 Chirpy를 선택해서 블로그를 만드려고 했는데, 쉬울 것으로 예상했지만 예상과 다르게도 수많은 역경과 난관을 거치고 난 뒤에야 블로그 개설을 완료하게 되었습니다. 설치 방법이 나와 있는 블로그마다도 방법이 모두 다르고 필수적으로 수행해야 되는 내용들 또한 파편화 되어있어서 통합 Guideline을 만들고자 하는 마음에 해당 포스트를 작성하게 되었습니다.
+
+제 개발 환경에서의 패키지 버전과 Chirpy 버전은 아래와 같습니다.
+
+
+  2024.09 기준
+  Chirpy: v7.1...</summary>
 
   </entry>
 
@@ -137,78 +195,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 
 
 echo &amp;#39;export NVM_DIR...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>VirtualBox 네트워크 설정 (호스트 전용 어댑터, 어댑터에 브리지 조합)</title>
-    <link href="https://minn727.github.io/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/" rel="alternate" type="text/html" title="VirtualBox 네트워크 설정 (호스트 전용 어댑터, 어댑터에 브리지 조합)" />
-    <published>2024-09-13T00:00:00+09:00</published>
-  
-    <updated>2024-09-14T14:29:48+09:00</updated>
-  
-    <id>https://minn727.github.io/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/</id>
-    <content src="https://minn727.github.io/posts/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95/" />
-    <author>
-      <name>Minho Choi</name>
-    </author>
-
-  
-    
-    <category term="개발 환경 설정" />
-    
-    <category term="VirtualBox" />
-    
-  
-
-  <summary>VirtualBox Ubuntu와 Windows가 서로 통신할 수 있으려면 VirtualBox의 네트워크 설정을 올바르게 구성해야 합니다.
-
-VirtualBox의 네트워크 모드는
-
-
-  NAT
-  NAT 네트워크
-  호스트 전용 어댑터
-  어댑터에 브리지
-  내부 네트워크
-
-
-등이 존재하지만, 일반적인 개발 환경에서는 NAT, 호스트 전용 어댑터, 어댑터에 브리지 정도만 사용되며, 네트워크 세팅에는 아래에서 소개할 2가지 방법이 주로 사용됩니다.
-
-먼저 각 모드에 대한 설명 이후 네트워크 설정 방법에 대해 기술하도록 하겠습니다.
-
-시간 없으신 분들은 2. 네트워크 설정 방법만 보시면 됩니다.
-
-1. 네트워크 모드
-
-아래에는 주로 쓰이는 3가지 모드에 대한 간략한 설명이 나와 있습니다. 좀더 상세한 설명...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>VirtualBox Samba 설정</title>
-    <link href="https://minn727.github.io/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/" rel="alternate" type="text/html" title="VirtualBox Samba 설정" />
-    <published>2024-09-13T00:00:00+09:00</published>
-  
-    <updated>2024-09-14T14:29:48+09:00</updated>
-  
-    <id>https://minn727.github.io/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/</id>
-    <content src="https://minn727.github.io/posts/VirtualBox-Samba-%EC%84%A4%EC%A0%95/" />
-    <author>
-      <name>Minho Choi</name>
-    </author>
-
-  
-    
-    <category term="개발 환경 설정" />
-    
-    <category term="VirtualBox" />
-    
-  
-
-  <summary></summary>
 
   </entry>
 
